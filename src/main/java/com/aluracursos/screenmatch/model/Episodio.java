@@ -1,42 +1,30 @@
 package com.aluracursos.screenmatch.model;
 
-
-
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
 public class Episodio {
     private Integer temporada;
-    private  String titutlo;
+    private String titulo;
     private Integer numeroEpisodio;
     private Double evaluacion;
     private LocalDate fechaDeLanzamiento;
 
-    public Episodio(Integer temporada, DatosEpisodio datosEpisodio) {
-        this.temporada = temporada;
-        this.titutlo = datosEpisodio.titutlo();
-        this.numeroEpisodio = datosEpisodio.numeroEpisodio();
-        try {
-            this.evaluacion = Double.valueOf(datosEpisodio.evaluacion()) ;
-        } catch (NumberFormatException ex){
+    public Episodio(Integer numero, DatosEpisodio d) {
+        this.temporada = numero;
+        this.titulo = d.titulo();
+        this.numeroEpisodio = d.numeroEpisodio();
+        try{
+            this.evaluacion = Double.valueOf(d.evaluacion());
+        }catch (NumberFormatException e){
             this.evaluacion = 0.0;
         }
         try{
-            this.fechaDeLanzamiento = LocalDate.parse(datosEpisodio.fechaDeLanzamiento());
-        }catch (DateTimeParseException ex){
+            this.fechaDeLanzamiento = LocalDate.parse(d.fechaDeLanzamiento());
+        } catch (DateTimeParseException e){
             this.fechaDeLanzamiento = null;
         }
 
-    }
-
-    @Override
-    public String toString() {
-        return
-                "temporada=" + temporada +
-                ", titutlo='" + titutlo + '\'' +
-                ", numeroEpisodio=" + numeroEpisodio +
-                ", evaluacion=" + evaluacion +
-                ", fechaDeLanzamiento=" + fechaDeLanzamiento;
     }
 
     public Integer getTemporada() {
@@ -47,12 +35,12 @@ public class Episodio {
         this.temporada = temporada;
     }
 
-    public String getTitutlo() {
-        return titutlo;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public void setTitutlo(String titutlo) {
-        this.titutlo = titutlo;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
     public Integer getNumeroEpisodio() {
@@ -77,5 +65,15 @@ public class Episodio {
 
     public void setFechaDeLanzamiento(LocalDate fechaDeLanzamiento) {
         this.fechaDeLanzamiento = fechaDeLanzamiento;
+    }
+
+    @Override
+    public String toString() {
+        return
+                "temporada=" + temporada +
+                        ", titulo='" + titulo + '\'' +
+                        ", numeroEpisodio=" + numeroEpisodio +
+                        ", evaluacion=" + evaluacion +
+                        ", fechaDeLanzamiento=" + fechaDeLanzamiento;
     }
 }
