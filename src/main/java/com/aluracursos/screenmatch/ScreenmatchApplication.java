@@ -17,7 +17,7 @@ public class ScreenmatchApplication  implements CommandLineRunner {
 		Principal principal = new Principal();
 		principal.muestraElMenu();
 //		var ejemploStreams = new EjemploStreams();
-//		ejemploStreams.muestraListaDeInstructores();
+//		ejemploStreams.muestraEjemplo();
 
 
 
